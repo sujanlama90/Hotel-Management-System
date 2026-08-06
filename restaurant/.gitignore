@@ -1,0 +1,75 @@
+# Python
+*.py[cod]
+*$py.class
+__pycache__/
+.pytest_cache/
+.pyre/
+.python-version
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+/media
+/staticfiles
+
+# Environment
+.env
+.env.*
+venv/
+ENV/
+env/
+momoEnv/
+.momoEnv/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# PyCharm
+.idea/
+
+# Distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs
+*.log
+
+# Unit test / coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environments
+venv/
+ENV/
+env/
+.pyenv/
+
+# Local env files
+*.env
+
