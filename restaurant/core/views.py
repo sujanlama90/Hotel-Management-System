@@ -1,7 +1,15 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
+from .models import Message
 # Create your views here.
 def index(request):
+    if request.method == "POST":
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+
+        Message.objects.create(name=name,phone=phone,email=email,message=message)
+        return redirect('index')
     return render(request,'core/index.html')
 
 def about(request):
