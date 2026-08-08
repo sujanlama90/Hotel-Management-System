@@ -1,0 +1,256 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- CDN for Bootstrap Icons (Include this in base.html head if not already present) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<div class="container py-5">
+    
+    <!-- Hero / Header Section -->
+    <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-8">
+            <span class="badge bg-danger-subtle text-danger fw-semibold px-3 py-2 rounded-pill mb-3">Support Center</span>
+            <h1 class="display-4 fw-bold text-dark mb-3">How can we help you?</h1>
+            <p class="lead text-muted">
+                Welcome to the <strong>MOMOS Restaurant Help Center</strong>. Find answers to common questions about our menu, reservations, catering, and services.
+            </p>
+            
+            <!-- Visual Search Bar Placeholder -->
+            <div class="input-group input-group-lg shadow-sm mt-4 rounded-3 overflow-hidden">
+                <span class="input-group-text bg-white border-end-0 ps-3">
+                    <i class="bi bi-search text-muted"></i>
+                </span>
+                <input type="text" id="faqSearch" class="form-control border-start-0 fs-6" placeholder="Type a keyword (e.g., catering, reservation, menu)...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Support Cards -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-top">
+                <div class="icon-shape bg-danger text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-journal-text fs-3"></i>
+                </div>
+                <h5 class="fw-bold">Explore Menu</h5>
+                <p class="text-muted small">Browse food items, daily specials, descriptions, and pricing.</p>
+                <a href="/menu" class="btn btn-outline-danger btn-sm mt-auto rounded-pill fw-semibold">View Menu</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-top">
+                <div class="icon-shape bg-danger text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-calendar-check fs-3"></i>
+                </div>
+                <h5 class="fw-bold">Table Reservation</h5>
+                <p class="text-muted small">Book a table for your friends and family ahead of time.</p>
+                <a href="/contact" class="btn btn-outline-danger btn-sm mt-auto rounded-pill fw-semibold">Book a Table</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm text-center p-4 rounded-4 hover-top">
+                <div class="icon-shape bg-danger text-white rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                    <i class="bi bi-shop fs-3"></i>
+                </div>
+                <h5 class="fw-bold">Event Catering</h5>
+                <p class="text-muted small">Let us handle the food for your special events and gatherings.</p>
+                <a href="#faqAccordion" class="btn btn-outline-danger btn-sm mt-auto rounded-pill fw-semibold">Catering Info</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Accordion Section -->
+    <div class="row justify-content-center mb-5">
+        <div class="col-lg-10">
+            <div class="d-flex align-items-center mb-4">
+                <i class="bi bi-question-circle-fill text-danger fs-3 me-2"></i>
+                <h2 class="h3 fw-bold m-0">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="accordion accordion-flush shadow-sm rounded-4 overflow-hidden border" id="faqAccordion">
+                
+                <!-- FAQ 1 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            1. How can I view the menu?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            You can visit the <strong>Menu</strong> section of our website to browse available food items, categories, descriptions, and prices. Please note that menu availability may change depending on seasonal ingredients and daily stock.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 2 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            2. How can I make a reservation?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            <p class="mb-2">To make a reservation, visit our <strong>Contact</strong> or reservation section and fill out the request form.</p>
+                            <p class="mb-0">If online reservations are unavailable, feel free to call us directly at <a href="tel:+9779862490193" class="text-danger fw-bold text-decoration-none">+977 9862490193</a>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 3 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            3. Can I order food online?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            Online ordering availability depends on our current operational services. If online ordering is enabled, please follow the instructions on our order page. Otherwise, give our restaurant a direct call to place a pickup or delivery order.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 4 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            4. Do you provide catering services?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            <p>Yes! MOMOS Restaurant provides full catering services for events and special occasions.</p>
+                            <p class="fw-semibold text-dark mb-2">For catering inquiries, please send us details including:</p>
+                            <ul class="list-unstyled ps-3">
+                                <li class="mb-1"><i class="bi bi-check2 text-danger me-2"></i>Event date & time</li>
+                                <li class="mb-1"><i class="bi bi-check2 text-danger me-2"></i>Estimated number of guests</li>
+                                <li class="mb-1"><i class="bi bi-check2 text-danger me-2"></i>Event location</li>
+                                <li class="mb-1"><i class="bi bi-check2 text-danger me-2"></i>Preferred menu selection</li>
+                                <li class="mb-1"><i class="bi bi-check2 text-danger me-2"></i>Special dietary requirements</li>
+                            </ul>
+                            <p class="mb-0">Our team will discuss custom menu options and pricing tailored to your needs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 5 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            5. Can I request a custom or special menu?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            Absolutely. Contact our restaurant team regarding special food requirements, allergies, or custom menu requests. We do our best to accommodate reasonable requests depending on ingredient availability and preparation time.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 6 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSix">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                            6. How can I subscribe to or unsubscribe from the newsletter?
+                        </button>
+                    </h2>
+                    <div id="collapseSix" class="accordion-collapse collapse" aria-labelledby="headingSix" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            <p><strong>To Subscribe:</strong> Enter your email address in the newsletter form at the bottom of our site to receive updates, discounts, and news.</p>
+                            <p class="mb-0"><strong>To Unsubscribe:</strong> Click the "Unsubscribe" link provided in any of our promotional emails or contact our support team directly.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 7 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingSeven">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                            7. What should I do if I spot incorrect information or site issues?
+                        </button>
+                    </h2>
+                    <div id="collapseSeven" class="accordion-collapse collapse" aria-labelledby="headingSeven" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            <p><strong>Incorrect Details:</strong> If you spot error in menu details, pricing, or operating hours, please inform us so we can update it promptly.</p>
+                            <p class="mb-2"><strong>Technical Issues:</strong> If the site isn't loading properly, try:</p>
+                            <ol class="ps-3 mb-0">
+                                <li>Refreshing the page</li>
+                                <li>Checking your internet connection</li>
+                                <li>Clearing your browser cache or switching browsers</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ 8 -->
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingEight">
+                        <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#collapseEight" aria-expanded="false" aria-controls="collapseEight">
+                            8. How can I leave feedback?
+                        </button>
+                    </h2>
+                    <div id="collapseEight" class="accordion-collapse collapse" aria-labelledby="headingEight" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body text-muted">
+                            We value your feedback! Reach out to us through our Contact form, direct email, or phone call to tell us about your experience. Your thoughts help us continuously improve our food and service.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Support Card -->
+    <div class="row justify-content-center">
+        <div class="col-lg-10">
+            <div class="card border-0 bg-danger text-white rounded-4 p-4 p-md-5 shadow-lg position-relative overflow-hidden">
+                <div class="row align-items-center position-relative z-1">
+                    <div class="col-md-7 mb-4 mb-md-0">
+                        <h3 class="fw-bold mb-2">Still need assistance?</h3>
+                        <p class="mb-0 opacity-75">Our team is always ready to answer your questions and help you plan your next meal or event.</p>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="bg-white text-dark p-4 rounded-3 shadow-sm">
+                            <h6 class="fw-bold text-uppercase text-muted mb-3 fs-7">Direct Contact</h6>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-geo-alt-fill text-danger me-3 fs-5"></i>
+                                <span>Lalitpur, Nepal</span>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="bi bi-telephone-fill text-danger me-3 fs-5"></i>
+                                <a href="tel:+9779862490193" class="text-dark text-decoration-none font-monospace fw-semibold">+977 9862490193</a>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="bi bi-envelope-fill text-danger me-3 fs-5"></i>
+                                <a href="mailto:sujanlama2323@gmail.com" class="text-dark text-decoration-none text-break fw-semibold">sujanlama2323@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Additional Custom Styling for Polish -->
+<style>
+    .hover-top {
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hover-top:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.08) !important;
+    }
+    .accordion-button:not(.collapsed) {
+        background-color: var(--bs-danger-bg-subtle);
+        color: var(--bs-danger);
+    }
+    .accordion-button:focus {
+        box-shadow: none;
+        border-color: rgba(0, 0, 0, 0.125);
+    }
+</style>
+{% endblock content %}

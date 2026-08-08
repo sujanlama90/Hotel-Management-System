@@ -27,3 +27,12 @@ def services(request):
 
 def testemonial(request):
     return render(request,'core/testemonial.html')
+
+def help(request):
+    return render(request,'core/help.html')
+
+def terms(request):
+    return render(request,'core/terms.html')
+
+def privacy(request):
+    return render(request,'core/privacy.html')

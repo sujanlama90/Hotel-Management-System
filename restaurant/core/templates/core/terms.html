@@ -1,0 +1,215 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- CDN for Bootstrap Icons (Include this in base.html head if not already present) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+<div class="container py-5">
+    
+    <!-- Hero / Header Section -->
+    <div class="row justify-content-center text-center mb-5">
+        <div class="col-lg-8">
+            <span class="badge bg-danger-subtle text-danger fw-semibold px-3 py-2 rounded-pill mb-3">Legal Agreement</span>
+            <h1 class="display-4 fw-bold text-dark mb-3">Terms of Service</h1>
+            <p class="text-muted">
+                <i class="bi bi-clock-history me-1"></i> <strong>Last Updated:</strong> August 8, 2026
+            </p>
+            <p class="lead text-muted">
+                Welcome to <strong>MOMOS Restaurant</strong>. By accessing or using our website and services, you agree to comply with the terms outlined below.
+            </p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        
+        <!-- Sidebar Navigation (Sticky Table of Contents) -->
+        <div class="col-lg-3 d-none d-lg-block">
+            <div class="card border-0 shadow-sm rounded-4 p-3 sticky-top" style="top: 2rem;">
+                <h6 class="fw-bold text-uppercase text-muted mb-3 fs-7 px-2">Terms Sections</h6>
+                <div class="nav flex-column nav-pills small" id="terms-nav">
+                    <a class="nav-link text-secondary py-2" href="#section-1"><i class="bi bi-check-circle me-2"></i>1. Acceptance</a>
+                    <a class="nav-link text-secondary py-2" href="#section-2"><i class="bi bi-cup-hot me-2"></i>2. Our Services</a>
+                    <a class="nav-link text-secondary py-2" href="#section-3"><i class="bi bi-tag me-2"></i>3. Menu & Pricing</a>
+                    <a class="nav-link text-secondary py-2" href="#section-4"><i class="bi bi-calendar-check me-2"></i>4. Reservations</a>
+                    <a class="nav-link text-secondary py-2" href="#section-5"><i class="bi bi-shop me-2"></i>5. Catering Services</a>
+                    <a class="nav-link text-secondary py-2" href="#section-6"><i class="bi bi-person-check me-2"></i>6. Responsibilities</a>
+                    <a class="nav-link text-secondary py-2" href="#section-7"><i class="bi bi-credit-card me-2"></i>7. Payments</a>
+                    <a class="nav-link text-secondary py-2" href="#section-8"><i class="bi bi-percent me-2"></i>8. Promotions</a>
+                    <a class="nav-link text-secondary py-2" href="#section-9"><i class="bi bi-file-text me-2"></i>9. Content</a>
+                    <a class="nav-link text-secondary py-2" href="#section-10"><i class="bi bi-link-45deg me-2"></i>10. Links</a>
+                    <a class="nav-link text-secondary py-2" href="#section-11"><i class="bi bi-hdd-network me-2"></i>11. Availability</a>
+                    <a class="nav-link text-secondary py-2" href="#section-12"><i class="bi bi-exclamation-triangle me-2"></i>12. Liability</a>
+                    <a class="nav-link text-secondary py-2" href="#section-13"><i class="bi bi-pencil-square me-2"></i>13. Changes</a>
+                    <a class="nav-link text-secondary py-2" href="#section-14"><i class="bi bi-telephone me-2"></i>14. Contact Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="col-lg-9">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5">
+                
+                <!-- Section 1: Acceptance -->
+                <section id="section-1" class="mb-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-shape bg-danger-subtle text-danger rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+                            <i class="bi bi-check-circle fs-5"></i>
+                        </div>
+                        <h2 class="h4 fw-bold m-0">1. Acceptance of Terms</h2>
+                    </div>
+                    <p class="text-muted">
+                        By accessing or using this website, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree with any part of these terms, please refrain from using our website or services.
+                    </p>
+                </section>
+
+                <hr class="my-4 text-muted opacity-25">
+
+                <!-- Section 2: Services -->
+                <section id="section-2" class="mb-5">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="icon-shape bg-danger-subtle text-danger rounded-circle p-2 me-3 d-flex align-items-center justify-content-center" style="width: 42px; height: 42px;">
+                            <i class="bi bi-cup-hot fs-5"></i>
+                        </div>
+                        <h2 class="h4 fw-bold m-0">2. Our Services</h2>
+                    </div>
+                    <p class="text-muted">MOMOS Restaurant provides food and hospitality-related services, including:</p>
+                    <div class="row g-2 mb-3">
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3 text-secondary"><i class="bi bi-check2-circle text-danger me-2"></i>Dine-in services</div></div>
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3 text-secondary"><i class="bi bi-check2-circle text-danger me-2"></i>Food and menu information</div></div>
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3 text-secondary"><i class="bi bi-check2-circle text-danger me-2"></i>General restaurant inquiries</div></div>
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3 text-secondary"><i class="bi bi-check2-circle text-danger me-2"></i>Table reservations</div></div>
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3 text-secondary"><i class="bi bi-check2-circle text-danger me-2"></i>Event catering services</div></div>
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3 text-secondary"><i class="bi bi-check2-circle text-danger me-2"></i>Promotions & customer support</div></div>
+                    </div>
+                    <p class="text-muted small mb-0">Please note that the availability of specific services may vary depending on location, date, operational hours, and restaurant seating capacity.</p>
+                </section>
+
+                <hr class="my-4 text-muted opacity-25">
+
+                <!-- Section 3 & 4: Menu, Pricing & Reservations -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6" id="section-3">
+                        <div class="p-4 bg-light rounded-4 h-100">
+                            <h3 class="h5 fw-bold text-dark mb-3"><i class="bi bi-tag text-danger me-2"></i>3. Menu & Pricing</h3>
+                            <p class="text-muted small mb-2">While we strive to ensure accurate descriptions, images, and prices, please note that:</p>
+                            <ul class="list-unstyled text-muted small mb-0">
+                                <li class="mb-1"><i class="bi bi-dot text-danger"></i>Menu items and availability change periodically.</li>
+                                <li class="mb-1"><i class="bi bi-dot text-danger"></i>Prices are subject to update without prior notice.</li>
+                                <li class="mb-0"><i class="bi bi-dot text-danger"></i>Food images are for visual representation only.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-6" id="section-4">
+                        <div class="p-4 bg-light rounded-4 h-100">
+                            <h3 class="h5 fw-bold text-dark mb-3"><i class="bi bi-calendar-check text-danger me-2"></i>4. Table Reservations</h3>
+                            <p class="text-muted small mb-2">When submitting reservation requests through our website, you agree to provide accurate details.</p>
+                            <p class="text-muted small mb-0">Submitting a request does not guarantee seating until formal confirmation is issued by MOMOS Restaurant. Please call us directly to modify or cancel requests.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section 5 & 6: Catering & Responsibilities -->
+                <section id="section-5" class="mb-5">
+                    <h2 class="h4 fw-bold text-dark mb-3">5. Catering Services</h2>
+                    <p class="text-muted">Catering requests require advance notice and formal confirmation. Specific details regarding guest counts, custom menus, logistics, and pricing will be finalized directly with our management team.</p>
+                </section>
+
+                <section id="section-6" class="mb-5">
+                    <h2 class="h4 fw-bold text-dark mb-3">6. Customer Responsibilities</h2>
+                    <p class="text-muted">When accessing or interacting with our website and staff, you agree to:</p>
+                    <ul class="list-group list-group-flush rounded-3">
+                        <li class="list-group-item border-0 bg-light mb-1 rounded text-secondary"><i class="bi bi-shield-check text-danger me-2"></i>Provide truthful and accurate information across all forms</li>
+                        <li class="list-group-item border-0 bg-light mb-1 rounded text-secondary"><i class="bi bi-shield-check text-danger me-2"></i>Use the platform strictly for lawful purposes</li>
+                        <li class="list-group-item border-0 bg-light mb-1 rounded text-secondary"><i class="bi bi-shield-check text-danger me-2"></i>Avoid actions that disrupt or damage website operations</li>
+                        <li class="list-group-item border-0 bg-light mb-1 rounded text-secondary"><i class="bi bi-shield-check text-danger me-2"></i>Treat our team and other patrons with respect</li>
+                    </ul>
+                </section>
+
+                <hr class="my-4 text-muted opacity-25">
+
+                <!-- Section 7, 8 & 9 -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4" id="section-7">
+                        <h4 class="h6 fw-bold text-dark"><i class="bi bi-credit-card text-danger me-2"></i>7. Payments</h4>
+                        <p class="text-muted small">Online transactions are handled by authorized third-party gateways. We do not store full payment card numbers on our server systems.</p>
+                    </div>
+                    <div class="col-md-4" id="section-8">
+                        <h4 class="h6 fw-bold text-dark"><i class="bi bi-percent text-danger me-2"></i>8. Promotions</h4>
+                        <p class="text-muted small">Special offers or discounts carry specific conditions, cannot be combined unless noted, and may be modified or terminated at any time.</p>
+                    </div>
+                    <div class="col-md-4" id="section-9">
+                        <h4 class="h6 fw-bold text-dark"><i class="bi bi-file-text text-danger me-2"></i>9. Site Content</h4>
+                        <p class="text-muted small">All text, photos, logos, and graphics are owned by MOMOS Restaurant and may not be reproduced without explicit authorization.</p>
+                    </div>
+                </div>
+
+                <!-- Section 10, 11 & 12 -->
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4" id="section-10">
+                        <h4 class="h6 fw-bold text-dark"><i class="bi bi-link-45deg text-danger me-2"></i>10. External Links</h4>
+                        <p class="text-muted small">We are not responsible for the content, security, or practices of third-party websites linked on our platform.</p>
+                    </div>
+                    <div class="col-md-4" id="section-11">
+                        <h4 class="h6 fw-bold text-dark"><i class="bi bi-hdd-network text-danger me-2"></i>11. Site Availability</h4>
+                        <p class="text-muted small">While we strive for 100% uptime, temporary interruptions may occur due to technical updates, maintenance, or external issues.</p>
+                    </div>
+                    <div class="col-md-4" id="section-12">
+                        <h4 class="h6 fw-bold text-dark"><i class="bi bi-exclamation-triangle text-danger me-2"></i>12. Liability</h4>
+                        <p class="text-muted small">To the extent permitted by law, MOMOS Restaurant isn't liable for losses arising from site interruptions or third-party usage.</p>
+                    </div>
+                </div>
+
+                <!-- Section 13 -->
+                <section id="section-13" class="mb-5">
+                    <h2 class="h4 fw-bold text-dark mb-3">13. Changes to These Terms</h2>
+                    <p class="text-muted mb-0">We reserve the right to revise these Terms of Service at any time. Any changes will be published on this page with an updated revision date.</p>
+                </section>
+
+                <!-- Section 14 / Contact Section -->
+                <section id="section-14" class="pt-3">
+                    <div class="card border-0 bg-danger text-white rounded-4 p-4 p-md-5">
+                        <div class="row align-items-center">
+                            <div class="col-md-7 mb-3 mb-md-0">
+                                <h3 class="fw-bold mb-2">14. Questions About Terms?</h3>
+                                <p class="mb-0 opacity-75">If you have any questions or require clarification regarding these Terms of Service, please contact us.</p>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="bg-white text-dark p-4 rounded-3 shadow-sm">
+                                    <h6 class="fw-bold text-uppercase text-muted mb-3 fs-7">MOMOS Restaurant</h6>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-geo-alt-fill text-danger me-3 fs-5"></i>
+                                        <span>Lalitpur, Nepal</span>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="bi bi-telephone-fill text-danger me-3 fs-5"></i>
+                                        <a href="tel:+9779862490193" class="text-dark text-decoration-none font-monospace fw-semibold">+977 9862490193</a>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <i class="bi bi-envelope-fill text-danger me-3 fs-5"></i>
+                                        <a href="mailto:sujanlama2323@gmail.com" class="text-dark text-decoration-none text-break fw-semibold">sujanlama2323@gmail.com</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Hover & Smooth Scroll Styles -->
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+    #terms-nav .nav-link:hover,
+    #terms-nav .nav-link:focus {
+        background-color: var(--bs-danger-bg-subtle);
+        color: var(--bs-danger) !important;
+        border-radius: 0.5rem;
+    }
+</style>
+{% endblock content %}
