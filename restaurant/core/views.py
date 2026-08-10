@@ -1,7 +1,14 @@
 from django.shortcuts import render,redirect
-from .models import Message
+from .models import Message,Category,Momo
+from django.contrib import messages
 # Create your views here.
 def index(request):
+    category = Category.objects.all()
+    cateid = request.GET.get('category')
+    if cateid:
+        momo = Momo.objects.filter(is_available=True,category=cateid)
+    else:
+        momo = Momo.objects.filter(is_available=True)
     if request.method == "POST":
         name = request.POST.get('name')
         phone = request.POST.get('phone')
@@ -9,8 +16,14 @@ def index(request):
         message = request.POST.get('message')
 
         Message.objects.create(name=name,phone=phone,email=email,message=message)
+        messages.success(request,'succesfully submit')
+
         return redirect('index')
-    return render(request,'core/index.html')
+    context ={
+        'category' :category,
+        'momo' :momo
+    }
+    return render(request,'core/index.html',context)
 
 def about(request):
     return render(request,'core/about.html')

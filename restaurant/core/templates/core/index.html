@@ -193,7 +193,7 @@
    </section>
 
    <!-- Menu Section -->
-   <section id="menu" class="menu-section section-padding">
+   <section id="menu" class="menu-section section-padding" >
       <div class="container">
          <div class="section-header text-center mb-5">
             <span class="section-subtitle">Our Specialties</span>
@@ -203,28 +203,31 @@
          
          <!-- Menu Categories -->
          <div class="menu-categories mb-5">
-            <button class="category-btn active" data-filter="all">All Items</button>
-            <button class="category-btn" data-filter="buff">Buff Momos</button>
-            <button class="category-btn" data-filter="chicken">Chicken Momos</button>
-            <button class="category-btn" data-filter="veg">Vegetarian</button>
-            <button class="category-btn" data-filter="specials">Specialties</button>
+            <button class="category-btn active " data-filter="all">All Items</button>
+       
+            {% for i in category %}
+               <a href="?category={{i.id}}#menu"><button class="category-btn {% if request.GET.category == i.id|stringformat:'s' %} active  {% endif %}" data-filter="buff">{{i.title}}</button>  </a>
+            {% endfor %}
+            
          </div>
          
          <!-- Menu Items Grid -->
          <div class="row menu-grid">
-            <!-- Item 1 -->
+            {% for i in momo  %}
+              
+           
             <div class="col-lg-4 col-md-6 menu-item" data-category="buff">
                <div class="menu-card">
                   <div class="menu-image">
-                     <img src="{% static 'images/veg_steam.jpeg' %}" alt="Buff Steam Momo">
+                     <img src="{{i.image.url}}" alt="Buff Steam Momo">
                      <span class="menu-badge">Best Seller</span>
                   </div>
                   <div class="menu-content">
                      <div class="menu-header">
-                        <h4>Buff Steam Momo</h4>
-                        <span class="menu-price">रु 120</span>
+                        <h4>{{i.name}}</h4>
+                        <span class="menu-price">रु {{i.price}}</span>
                      </div>
-                     <p>Traditional steamed momos with seasoned buff filling, served with sesame tomato chutney</p>
+                     <p>{{i.desc}}</p>
                      <div class="menu-footer">
                         <span class="menu-tag"><i class="fas fa-fire"></i> Spicy</span>
                         <span class="menu-tag"><i class="fas fa-clock"></i> 15 mins</span>
@@ -235,30 +238,11 @@
                   </div>
                </div>
             </div>
-            
-            <!-- Item 2 -->
-            <div class="col-lg-4 col-md-6 menu-item" data-category="chicken">
-               <div class="menu-card">
-                  <div class="menu-image">
-                     <img src="{% static 'images/momo_d.jpg' %}" alt="Chicken Fried Momo">
-                  </div>
-                  <div class="menu-content">
-                     <div class="menu-header">
-                        <h4>Chicken Fried Momo</h4>
-                        <span class="menu-price">रु 180</span>
-                     </div>
-                     <p>Crispy fried momos with juicy chicken filling, served with spicy mayo dip</p>
-                     <div class="menu-footer">
-                        <span class="menu-tag"><i class="fas fa-pepper-hot"></i> Medium</span>
-                        <span class="menu-tag"><i class="fas fa-clock"></i> 20 mins</span>
-                        <button class="add-to-cart" data-item="Chicken Fried Momo" data-price="180">
-                           <i class="fas fa-plus"></i> Add
-                        </button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            
+            {% empty %}
+             <p class="alert alert-success text-center">no item here</p>
+            {% endfor %}
+         
+          
             <!-- Add more menu items as needed -->
          </div>
          
@@ -324,14 +308,15 @@
          <div class="col-lg-6 col-md-12" data-aos="flip-down">
             <div class="contact-form-wrapper">
                <h3 class="mb-4">Send us a Message</h3>
-               <form method="post" action="{% url 'index' %}"  class="contact-form">
+               <form method="post" action="{% url 'index' %}"  class="contact-form" id="contactForm">
                   {% csrf_token %}
                   <div class="row g-3">
                      <div class="col-md-6">
                         <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                      </div>
                      <div class="col-md-6">
-                        <input type="tel" name="phone" class="form-control" placeholder="Phone Number" required>
+                        <input type="tel" name="phone" id="phone" class="form-control" placeholder="Phone Number" required>
+                        <span id="error_msg" style="display: none;">Invalid phone number</span>
                      </div>
                      <div class="col-12">
                         <input type="email" name="email"  class="form-control" placeholder="Email Address">
