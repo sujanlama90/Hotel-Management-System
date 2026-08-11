@@ -128,20 +128,9 @@ a{
 
 /* ---------------- HEADERS ---------------- */
 .header1{
-    background-image: url("../images/buff_momo.jpeg");
+    
     background-size: cover;
 }
-
-.header2{
-    background-image: url("../images/c_momo.jpg");
-    background-size: cover;
-}
-
-.header3{
-    background-image: url("../images/chicken_fried.jpg");
-    background-size: cover;
-}
-
 .h1{
     font-size: 4.5em;
     text-align: center;

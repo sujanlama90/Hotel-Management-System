@@ -203,7 +203,7 @@
          
          <!-- Menu Categories -->
          <div class="menu-categories mb-5">
-            <a href=""><button class="category-btn active " data-filter="all">All Items</button></a>
+            <a href="?category=all#menu"><button class="category-btn {% if request.GET.category == 'all' %} active {% endif %} " data-filter="all">All Items</button></a>
          {% for i in category %}
             <a href="?category={{i.id}}#menu"><button class="category-btn {% if request.GET.category == i.id|stringformat:'s' %} active  {% endif %}" data-filter="buff">{{i.title}}</button>  </a>
          {% endfor %}
