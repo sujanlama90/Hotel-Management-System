@@ -203,12 +203,10 @@
          
          <!-- Menu Categories -->
          <div class="menu-categories mb-5">
-            <button class="category-btn active " data-filter="all">All Items</button>
-       
-            {% for i in category %}
-               <a href="?category={{i.id}}#menu"><button class="category-btn {% if request.GET.category == i.id|stringformat:'s' %} active  {% endif %}" data-filter="buff">{{i.title}}</button>  </a>
-            {% endfor %}
-            
+            <a href=""><button class="category-btn active " data-filter="all">All Items</button></a>
+         {% for i in category %}
+            <a href="?category={{i.id}}#menu"><button class="category-btn {% if request.GET.category == i.id|stringformat:'s' %} active  {% endif %}" data-filter="buff">{{i.title}}</button>  </a>
+         {% endfor %}
          </div>
          
          <!-- Menu Items Grid -->
@@ -399,3 +397,26 @@
    </div>
 </section>
 {% endblock content %}
+
+{% block extrajs %}
+   {% if messages %}
+    {% for message in messages %}
+
+    <script>
+        alertify.set('notifier', 'position', 'top-right');
+
+        const tag = "{{ message.tags }}";
+
+        if (tag === "success") {
+            alertify.success("{{ message|escapejs }}");
+        } else if (tag === "error") {
+            alertify.error("{{ message|escapejs }}");
+        } else if (tag === "warning") {
+            alertify.warning("{{ message|escapejs }}");
+        } else {
+            alertify.message("{{ message|escapejs }}");
+        }
+    </script>
+    {% endfor %}
+    {% endif %}
+{% endblock extrajs %}

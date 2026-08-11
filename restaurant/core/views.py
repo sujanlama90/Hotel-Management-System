@@ -16,7 +16,7 @@ def index(request):
         message = request.POST.get('message')
 
         Message.objects.create(name=name,phone=phone,email=email,message=message)
-        messages.success(request,'succesfully submit')
+        messages.success(request,f'Hey {name} ,your message succesfully submit')
 
         return redirect('index')
     context ={
