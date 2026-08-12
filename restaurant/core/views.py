@@ -74,3 +74,29 @@ def terms(request):
 
 def privacy(request):
     return render(request,'core/privacy.html')
+'''
+==============================================================================================================
+==============================================================================================================
+                                                Auth Part
+==============================================================================================================
+==============================================================================================================
+
+'''
+
+def register(request):
+    if request.method == "POST":
+        fname=request.POST.get('fname')
+        lname=request.POST.get('lname')
+        username = request.POST.get('uername')
+        email = request.POST.get('email')
+        password = request.POST.get('password')
+        cpassword = request.POST.get('cpassword')
+        if password == cpassword:
+            pass
+        else:
+            messages.error(request,'password and confirm password doesnot match')
+            return redirect('register')
+    return render(request,'auth/register.html')
+
+def log_in(request):
+    return render(request,'auth/login.html')

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <!-- cdn bootsrap css link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- custom css -->
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">
+</head>
+
+<body class="bg-light">
+    <div class="container min-vh-100 d-flex align-items-center py-5">
+        <div class="row w-100 bg-white shadow-lg rounded rounded-4">
+            <div class="col-lg-6 bg-dark text-white p-5 d-flex justify-content-center align-items-center flex-column">
+                <h1 class="fw-bold mb-3">Welcome to our App</h1>
+                <p class="text-white-50">Create a user Account </p>
+                <img src="{% static 'images/back.jpg' %}" class="img-fluid rounded rounded-4 shadow"
+                    style="max-height: 350px; object-fit: cover;" alt="">
+            </div>
+            <div class="col-lg-6">
+                <div class="main">
+                    <div>
+                        <!-- From Uiverse.io by Yaya12085 -->
+                        <form class="form">
+                            <a href="{% url 'index' %}">
+                                <h2 class="cross "><i class="fa-solid fa-circle-xmark"></i>
+                                </h2>
+                            </a>
+                            <p class="title">login </p>
+                            <p class="message">SignIn now and get full access to our app. </p>
+                            <label>
+                                <input required="" placeholder="" type="text" class="input">
+                                <span>username</span>
+                            </label>
+                            <label>
+                                <input required="" placeholder="" type="password" class="input">
+                                <span>Password</span>
+                            </label>
+                            <label>
+                                <input required="" placeholder="" type="password" class="input">
+                                <span>Confirm password</span>
+                            </label>
+                            <button class="submit">Submit</button>
+                            <p class="signin">Do not have an acount ? <a href="{% url 'register' %}">Signup</a> </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bootsrap js cdn link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
