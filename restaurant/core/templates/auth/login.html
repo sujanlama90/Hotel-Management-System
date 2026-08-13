@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- alertfy CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
     <!-- custom css -->
     <link rel="stylesheet" href="{% static 'css/auth.css' %}">
 </head>
@@ -30,7 +32,8 @@
                 <div class="main">
                     <div>
                         <!-- From Uiverse.io by Yaya12085 -->
-                        <form class="form">
+                        <form class="form" method="post" action="{% url 'log_in' %}">
+                            {% csrf_token %}
                             <a href="{% url 'index' %}">
                                 <h2 class="cross "><i class="fa-solid fa-circle-xmark"></i>
                                 </h2>
@@ -38,16 +41,12 @@
                             <p class="title">login </p>
                             <p class="message">SignIn now and get full access to our app. </p>
                             <label>
-                                <input required="" placeholder="" type="text" class="input">
+                                <input required="" placeholder="" name="username" type="text" class="input">
                                 <span>username</span>
                             </label>
                             <label>
-                                <input required="" placeholder="" type="password" class="input">
+                                <input required="" placeholder="" name="password" type="password" class="input">
                                 <span>Password</span>
-                            </label>
-                            <label>
-                                <input required="" placeholder="" type="password" class="input">
-                                <span>Confirm password</span>
                             </label>
                             <button class="submit">Submit</button>
                             <p class="signin">Do not have an acount ? <a href="{% url 'register' %}">Signup</a> </p>
@@ -62,6 +61,29 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+    <!-- JavaScript -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/alertify.min.js"></script>
+    {% if messages %}
+    {% for message in messages %}
+
+    <script>
+        alertify.set('notifier', 'position', 'top-right');
+
+        const tag = "{{ message.tags }}";
+
+        if (tag === "success") {
+            alertify.success("{{ message|escapejs }}");
+        } else if (tag === "error") {
+            alertify.error("{{ message|escapejs }}");
+        } else if (tag === "warning") {
+            alertify.warning("{{ message|escapejs }}");
+        } else {
+            alertify.message("{{ message|escapejs }}");
+        }
+    </script>
+    {% endfor %}
+    {% endif %}
 
 </body>
 

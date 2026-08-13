@@ -2,6 +2,12 @@ from django.shortcuts import render,redirect
 from .models import Message,Category,Momo,Review
 from django.contrib import messages
 import qrcode
+from django.contrib.auth.models import User
+from django.contrib.auth.password_validation import validate_password
+from django.core.exceptions import ValidationError
+from django.contrib.auth import authenticate,login,logout 
+import re
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 def index(request):
     category = Category.objects.all()
@@ -34,6 +40,7 @@ def about(request):
 def contact(request):
     return render(request,'core/contact.html')
 
+@login_required(login_url='log_in')
 def menu(request):
     category = Category.objects.all()
     qr = qrcode.make('http://127.0.0.1:8000/menu/')
@@ -87,16 +94,55 @@ def register(request):
     if request.method == "POST":
         fname=request.POST.get('fname')
         lname=request.POST.get('lname')
-        username = request.POST.get('uername')
+        username = request.POST.get('username')
         email = request.POST.get('email')
         password = request.POST.get('password')
         cpassword = request.POST.get('cpassword')
         if password == cpassword:
-            pass
+            if  User.objects.filter(username=username).exists():
+                messages.error(request,'username already exists')
+                return redirect('register')
+            if  User.objects.filter(email=email).exists():
+                messages.error(request,'email already exists')
+                return redirect('register')
+            
+            if not re.search(r"[A-Z]",password):
+                messages.error(request,'paswword must contain at least one upper char')
+
+            if not re.search(r"\d",password):
+                    messages.error(request,'paswword must contain at least one digit')
+
+            try:
+                user = User(first_name=fname,username=username)
+                validate_password(password,user=user)
+                User.objects.create_user(first_name = fname,last_name=lname,username=username,email=email,password=password)
+                messages.success(request,'your account successfuly register')
+                return redirect('register')
+            except ValidationError as e:
+                for i in e.messages:
+                    messages.error(request,i)
         else:
             messages.error(request,'password and confirm password doesnot match')
             return redirect('register')
     return render(request,'auth/register.html')
 
 def log_in(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        if not User.objects.filter(username=username).exists():
+            messages.error(request,'username is not register yet')
+            return redirect('log_in')
+            
+        user = authenticate(username=username,password=password)
+        if user is not None:
+            login(request,user)
+            return redirect('index')
+        else:
+            messages.error(request,'Invalid Pasword!!')
+            return redirect('register')
     return render(request,'auth/login.html')
+
+def log_out(request):
+    logout(request)
+    return redirect('log_in')
