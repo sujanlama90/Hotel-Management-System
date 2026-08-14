@@ -8,6 +8,7 @@ from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate,login,logout 
 import re
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 # Create your views here.
 def index(request):
     category = Category.objects.all()
@@ -28,6 +29,10 @@ def index(request):
         messages.success(request,f'Hey {name} ,your message succesfully submit')
 
         return redirect('index')
+        # set cookies
+        # response = redirect('index')
+        # response.set_cookie('name',name,max_age=3600)
+        # return response
     context ={
         'category' :category,
         'momo' :momo
@@ -127,9 +132,12 @@ def register(request):
     return render(request,'auth/register.html')
 
 def log_in(request):
+    # name = request.COOKIES.get('name','') #call cookies
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
+        remember_me = request.POST.get('remember_me')
+
         if not User.objects.filter(username=username).exists():
             messages.error(request,'username is not register yet')
             return redirect('log_in')
@@ -137,12 +145,30 @@ def log_in(request):
         user = authenticate(username=username,password=password)
         if user is not None:
             login(request,user)
-            return redirect('index')
+            if remember_me:
+                request.session.set_expiry(36000)
+            else:
+                request.session.set_expiry(0)
+            next= request.POST.get('next')
+            return redirect( next if next else 'index')
         else:
             messages.error(request,'Invalid Pasword!!')
             return redirect('register')
-    return render(request,'auth/login.html')
+
+    next = request.GET.get('next','')
+    return render(request,'auth/login.html',{'next':next})
 
 def log_out(request):
     logout(request)
     return redirect('log_in')
+
+# password change when user login
+@login_required(login_url='log_in')
+def password_change(request):
+    form = PasswordChangeForm(user=request.user)
+    if request.method == 'POST':
+        form = PasswordChangeForm(user=request.user,data = request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('log_in')
+    return render(request,'auth/password_change.html',{'form':form})

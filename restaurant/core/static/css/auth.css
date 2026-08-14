@@ -139,4 +139,30 @@
   scale: 1.2;
   color: blueviolet;
 }
+
+/* eye */
+/* Password eye icon */
+.form label.password-field {
+    position: relative;
+    display: block;
+    width: 100%;
+}
+
+.form label.password-field .input {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 50px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 20;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 1;
+}
 /* register css end */
