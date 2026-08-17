@@ -165,4 +165,33 @@
     font-size: 18px;
     line-height: 1;
 }
+/* Ensure the label acts as a positioning container */
+.password-field {
+    position: relative;
+    width: 100%;
+}
+
+/* Add right padding so text doesn't overlap the eye icon */
+.password-field .input {
+    padding-right: 40px !important;
+}
+
+/* Position eye icon inside input field on the right */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-style: normal;
+    user-select: none;
+    z-index: 10;
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+}
+
+.toggle-password:hover {
+    opacity: 1;
+}
+
 /* register css end */

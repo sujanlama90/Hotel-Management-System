@@ -23,7 +23,7 @@
     <div class="container min-vh-100 d-flex align-items-center py-5">
         <div class="row w-100 bg-white shadow-lg rounded rounded-4">
             <div class="col-lg-6 bg-dark text-white p-5 d-flex justify-content-center align-items-center flex-column">
-                <h1 class="fw-bold mb-3">hi ,{{name}} Welcome to our App</h1>
+                <h1 class="fw-bold mb-3">Welcome to our App</h1>
                 <p class="text-white-50">Create a user Account </p>
                 <img src="{% static 'images/back.jpg' %}" class="img-fluid rounded rounded-4 shadow"
                     style="max-height: 350px; object-fit: cover;" alt="">
@@ -44,25 +44,24 @@
                                 <input required="" placeholder="" name="username" type="text" class="input">
                                 <span>username</span>
                             </label>
-                            <label class="password-field">
-                                <input required placeholder="" name="password" type="password" class="input"
+                            <label class="password-field position-relative d-block w-100">
+                                <input required placeholder="" name="password" type="password" class="input pe-5"
                                     id="password">
                                 <span>Password</span>
                                 <input type="hidden" value="{{next}}" name="next">
 
                                 <i class="toggle-password" id="togglePassword">👁️</i>
-
-                                <div class="text-end mt-2">
-                                    <a href="{% url 'password_reset' %}" class="text-decoration-none">
-                                        Forgot Password?
-                                    </a>
-                                </div>
-
-                                <div>
-                                    <input type="checkbox" name="remember_me" id="">
-                                    <label for="">Remember me</label>
-                                </div>
                             </label>
+
+                            <div class="d-flex justify-content-between align-items-center mt-2">
+                                <div>
+                                    <input type="checkbox" name="remember_me" id="remember_me">
+                                    <label for="remember_me">Remember me</label>
+                                </div>
+                                <a href="{% url 'password_reset' %}" class="text-decoration-none">
+                                    Forgot Password?
+                                </a>
+                            </div>
                             <button class="submit">Submit</button>
                             <p class="signin">Do not have an acount ? <a href="{% url 'register' %}">Signup</a> </p>
                         </form>
