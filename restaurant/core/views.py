@@ -358,7 +358,6 @@ def log_in(request):
 
         # If authentication is successful
         if user is not None:
-
             # Log the user into Django
             login(request, user)
 
@@ -434,10 +433,8 @@ def password_change(request):
 
         # Check whether form data is valid
         if form.is_valid():
-
             # Save the new password
             form.save()
-
             # Redirect user to login page
             return redirect('log_in')
 
