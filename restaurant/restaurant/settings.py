@@ -31,9 +31,10 @@ INSTALLED_APPS = [
 EXTERNAL_APPS =[
     'core',
     'allauth',
-        'allauth.account',
-        'allauth.socialaccount',
-        'social_django'
+    'allauth.account',
+    'allauth.socialaccount',
+    'social_django',
+    "allauth.socialaccount.providers.facebook",
 ]
 INSTALLED_APPS.extend(EXTERNAL_APPS)
 
@@ -88,15 +89,29 @@ LOGOUT_REDIRECT_URL ="log_in"
 AUTHENTICATION_BACKENDS = [
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'allauth.account.auth_backends.AuthenticationBackend',
     'django.contrib.auth.backends.ModelBackend',
 ]
 
+# google oauth
 SOCIAL_AUTH_URL_NAMESPACE = config('SOCIAL_AUTH_URL_NAMESPACE')
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
 
+# github 
 SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY')
 SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET')
+
+# facebook
+SOCIAL_AUTH_FACEBOOK_KEY=config('SOCIAL_AUTH_FACEBOOK_KEY')
+SOCIAL_AUTH_FACEBOOK_SECRET=config('SOCIAL_AUTH_FACEBOOK_SECRET')
+
+# Force HTTP for local testing redirect URIs
+SOCIAL_AUTH_REDIRECT_IS_HTTPS = False
+
+# Required if running behind a local reverse proxy or tunnel
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 WSGI_APPLICATION = 'restaurant.wsgi.application'
 
