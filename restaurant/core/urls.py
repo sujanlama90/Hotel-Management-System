@@ -11,6 +11,11 @@ urlpatterns = [
     path('help/',help,name='help'),
     path('terms/',terms,name='terms'),
     path('privacy/',privacy,name='privacy'),
+    path("newsletteSubscribe/", newsletter_subscribe, name="newsletter_subscribe"),
+    path('cateringRequest/',CateringRequests,name='CateringRequests'),
+    path('privateDiningBooking/',privateDiningBooking,name='privateDiningBooking'),
+    path('workshopBooking/',workshopBooking,name='workshopBooking')
+    ,
     # auth part
     path('register/',register,name='register'),
     path('log_in/',log_in,name='log_in'),

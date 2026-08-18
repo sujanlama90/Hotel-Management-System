@@ -2,10 +2,10 @@
 {% load static %}
 {% block CSS %}
 <link rel="stylesheet" href="{% static 'css/testeminol.css' %}">
-  
+
 {% endblock CSS %}
 {% block content %}
-  
+
 <!-- Testimonials Hero -->
 <section class="testimonials-hero hero-section">
    <div class="container">
@@ -18,7 +18,7 @@
                   <span class="text-orange">M</span>omos Lovers
                </h1>
                <p class="hero-description">
-                  Discover what our customers say about their authentic Nepalese dining experience. 
+                  Discover what our customers say about their authentic Nepalese dining experience.
                   From first-time visitors to regulars, hear their stories.
                </p>
                <div class="hero-stats mt-4">
@@ -66,15 +66,15 @@
          <h2 class="section-title">What Makes Us <span class="text-orange">D</span>ifferent</h2>
          <p class="section-description">Hear from our most loyal customers</p>
       </div>
-      
+
       <div class="row g-4">
          <!-- Featured Testimonial -->
-          {% for i in testemonial %}
+         {% for i in testemonial %}
          <div class="col-lg-4 col-md-6">
             <div class="testimonial-card featured">
                <div class="testimonial-header">
                   <div class="author-info">
-                     <img src="images/customer1.jpg" alt="Sujan Thadarai" class="author-img">
+                     <img src="{% static 'images/sujan.png' %}" alt="Sujan lama" class="author-img">
                      <div>
                         <h5>{{i.name}}</h5>
                         <span>{{i.order}}</span>
@@ -89,7 +89,7 @@
                   </div>
                </div>
                <p class="testimonial-text">
-                 {{i.message}}
+                  {{i.message}}
                </p>
                <div class="testimonial-footer">
                   <span class="badge bg-primary">Most Helpful Review</span>
@@ -110,7 +110,8 @@
          <div class="col-lg-6">
             <div class="review-content">
                <h2 class="section-title">Share Your <span class="text-orange">E</span>xperience</h2>
-               <p>We value your feedback! Share your dining experience with us and help others discover authentic Nepalese cuisine.</p>
+               <p>We value your feedback! Share your dining experience with us and help others discover authentic
+                  Nepalese cuisine.</p>
                <div class="review-benefits">
                   <div class="benefit-item">
                      <i class="fas fa-gift"></i>
@@ -147,13 +148,14 @@
                      <input type="text" class="form-control" name="name" placeholder="Your Name" required>
                   </div>
                   <div class="mb-3">
-                     <textarea class="form-control" rows="4" name="message" placeholder="Your review..." required></textarea>
+                     <textarea class="form-control" rows="4" name="message" placeholder="Your review..."
+                        required></textarea>
                   </div>
                   <div class="mb-3">
                      <select class="form-select" name="order">
-                        
+
                         <option value="">What did you order?</option>
-                         {% for i in momo %}
+                        {% for i in momo %}
                         <option value="{{i.name}}">{{i.name}}</option>
 
                         {% endfor %}
@@ -171,55 +173,55 @@
 
 <!-- JavaScript for Rating System -->
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-   const stars = document.querySelectorAll('.rating-input i');
-   const ratingInput = document.getElementById('ratingValue');
-   
-   stars.forEach(star => {
-      star.addEventListener('click', function() {
-         const rating = this.getAttribute('data-rating');
-         ratingInput.value = rating;
-         
+   document.addEventListener('DOMContentLoaded', function () {
+      const stars = document.querySelectorAll('.rating-input i');
+      const ratingInput = document.getElementById('ratingValue');
+
+      stars.forEach(star => {
+         star.addEventListener('click', function () {
+            const rating = this.getAttribute('data-rating');
+            ratingInput.value = rating;
+
+            stars.forEach(s => {
+               s.classList.remove('fas');
+               s.classList.add('far');
+            });
+
+            for (let i = 0; i < rating; i++) {
+               stars[i].classList.remove('far');
+               stars[i].classList.add('fas');
+            }
+         });
+
+         star.addEventListener('mouseover', function () {
+            const rating = this.getAttribute('data-rating');
+
+            stars.forEach(s => {
+               s.classList.remove('fas');
+               s.classList.add('far');
+            });
+
+            for (let i = 0; i < rating; i++) {
+               stars[i].classList.remove('far');
+               stars[i].classList.add('fas');
+            }
+         });
+      });
+
+      const form = document.getElementById('reviewForm');
+      form.addEventListener('submit', function (e) {
+         e.preventDefault();
+         alert('Thank you for your review! You will receive 10% off on your next visit.');
+         form.reset();
          stars.forEach(s => {
             s.classList.remove('fas');
             s.classList.add('far');
          });
-         
-         for (let i = 0; i < rating; i++) {
-            stars[i].classList.remove('far');
-            stars[i].classList.add('fas');
-         }
-      });
-      
-      star.addEventListener('mouseover', function() {
-         const rating = this.getAttribute('data-rating');
-         
-         stars.forEach(s => {
-            s.classList.remove('fas');
-            s.classList.add('far');
-         });
-         
-         for (let i = 0; i < rating; i++) {
-            stars[i].classList.remove('far');
-            stars[i].classList.add('fas');
-         }
+         stars[4].classList.remove('far');
+         stars[4].classList.add('fas');
+         ratingInput.value = '5';
       });
    });
-   
-   const form = document.getElementById('reviewForm');
-   form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for your review! You will receive 10% off on your next visit.');
-      form.reset();
-      stars.forEach(s => {
-         s.classList.remove('fas');
-         s.classList.add('far');
-      });
-      stars[4].classList.remove('far');
-      stars[4].classList.add('fas');
-      ratingInput.value = '5';
-   });
-});
 </script>
 
 {% endblock content %}

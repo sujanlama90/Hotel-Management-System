@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
-from .models import Message, Category, Momo, Review
+from .models import *
 from django.contrib import messages
 import qrcode
 from django.contrib.auth.models import User
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate, login, logout
+from django.core.mail import send_mail
+from django.template.loader import render_to_string
+from datetime import datetime
 # Python regular expression library
 # Used here to check uppercase letters and numbers in passwords
 import re
@@ -24,6 +27,9 @@ def index(request):
     # Get all categories from the Category table
     category = Category.objects.all()
 
+
+    # Get all categories from the Review table
+    review = Review.objects.all()
     # Get the category ID from the URL
     # Example: ?category=2
     cateid = request.GET.get('category')
@@ -62,6 +68,12 @@ def index(request):
             message=message
         )
 
+        subject ='thank you for submiting message'
+        message =render_to_string('core/mail.html',{'name':name,'phone':phone,'email':email,'message':message,'date':datetime.now()})
+        from_email = 'sujanlama2323@gmail.com'
+        recipient_list = [email]
+        send_mail(subject=subject,message=message,from_email=from_email,recipient_list=recipient_list,fail_silently=False)
+
         # Show a success message
         messages.success(
             request,
@@ -82,11 +94,29 @@ def index(request):
     # Data that will be sent to the HTML template
     context = {
         'category': category,
-        'momo': momo
+        'momo': momo,
+        'review':review
     }
 
     # Display the home page
     return render(request, 'core/index.html', context)
+
+@login_required(login_url='log_in')
+def newsletter_subscribe(request):
+    if request.method == "POST":
+        email = request.POST.get('email')
+
+        if not email:
+            messages.error(request, "Please enter an email address.")
+        elif Newsletter.objects.filter(email=email).exists():
+            messages.error(request, "You are already subscribed!")
+        else:
+            Newsletter.objects.create(email=email)
+            messages.success(request,"Thank you for subscribing to our newsletter!")
+            return redirect(request.META.get("HTTP_REFERER", "/"))
+
+
+    return redirect('index')
 
 
 # ==========================================================
@@ -104,6 +134,18 @@ def about(request):
 # ==========================================================
 
 def contact(request):
+
+    if request.method == "POST":
+        name = request.POST.get('name')
+        phone = request.POST.get('phone')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+        newsletter = request.POST.get('newsletter') == 'on'
+
+        Contact.objects.create(name=name,phone=phone,email=email,subject=subject,message=message,newsletter=newsletter)
+
+        return redirect('contact')
 
     # Display the contact page
     return render(request, 'core/contact.html')
@@ -216,6 +258,44 @@ def privacy(request):
     # Display privacy policy page
     return render(request, 'core/privacy.html')
 
+
+def CateringRequests(request):
+    if request.method == 'POST':
+        event_type = request.POST.get('event_type')
+        guests_range = request.POST.get('guests_range')
+        event_date = request.POST.get('event_date')
+        preferred_package = request.POST.get('package') 
+        additional_requirements = request.POST.get('additional_requirements')
+
+        CateringRequest.objects.create(event_type=event_type,guests_range=guests_range,event_date=event_date,preferred_package=preferred_package,additional_requirements=additional_requirements)
+        messages.success(request, "Your catering request has been submitted successfully!")
+        return redirect(request.META.get("HTTP_REFERER", "/"))
+
+def privateDiningBooking(request):
+    if request.method == "POST":
+        date = request.POST.get('date')
+        time_slot= request.POST.get('time_slot')
+        guests = request.POST.get('guests')
+        occasion = request.POST.get('occasion')
+        special_requests = request.POST.get('special_requests')
+        PrivateDiningBooking.objects.create(date=date,time_slot=time_slot,guests=guests,occasion=occasion,special_requests=special_requests)
+        messages.success(request, "Your private dining booking has been submitted successfully!")
+
+        return redirect(request.META.get("HTTP_REFERER", "/"))
+
+def workshopBooking(request):
+    if request.method == 'POST':
+        workshop_type = request.POST.get('workshop_type')
+        preferred_date = request.POST.get('preferred_date')
+        number_of_participants = request.POST.get('number_of_participants')
+        time_preference = request.POST.get('time_preference')
+        participant_details = request.POST.get('participant_details')
+
+        WorkshopBooking.objects.create(workshop_type=workshop_type,preferred_date=preferred_date,number_of_participants=number_of_participants,time_preference=time_preference,participant_details=participant_details)
+        messages.success(request, "Your workshop booking has been submitted successfully!")
+
+
+        return redirect(request.META.get("HTTP_REFERER", "/"))
 
 # ==========================================================
 #                       AUTH PART

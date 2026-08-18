@@ -2,11 +2,11 @@
 {% load static %}
 {% block CSS %}
 <link rel="stylesheet" href="{% static 'css/about.css' %}">
-  
+
 {% endblock CSS %}
 
 {% block content %}
-  
+
 
 <!-- Contact Hero -->
 <section class="contact-hero hero-section">
@@ -20,25 +20,25 @@
                   <span class="text-orange">S</span>erve You
                </h1>
                <p class="hero-description">
-                  Have questions, feedback, or want to make a reservation? 
-                  We're just a message or call away. Our team is ready to assist you 
+                  Have questions, feedback, or want to make a reservation?
+                  We're just a message or call away. Our team is ready to assist you
                   with all your dining needs.
                </p>
-               
+
                <!-- Quick Contact Info -->
                <div class="quick-contact mt-4">
                   <div class="quick-contact-item">
                      <i class="fas fa-phone-alt"></i>
                      <div>
                         <h6>Call Us</h6>
-                        <a href="">+977 9816107823</a>
+                        <a href="tel:9862491093">+977 9862490193</a>
                      </div>
                   </div>
                   <div class="quick-contact-item">
                      <i class="fas fa-envelope"></i>
                      <div>
                         <h6>Email Us</h6>
-                        <a href="">info@momosrestaurant.com</a>
+                        <a href="mailTo:sujanlama2323@gmail.com">info@momosrestaurant.com</a>
                      </div>
                   </div>
                   <div class="quick-contact-item">
@@ -49,12 +49,12 @@
                      </div>
                   </div>
                </div>
-               
+
                <div class="hero-buttons mt-4">
                   <a href="#reservation" class="btn btn-primary">
                      <i class="fas fa-calendar-alt me-2"></i>Book a Table
                   </a>
-                  <a href="" target="_blank" class="btn btn-success">
+                  <a href="https://wa.me/9779862490193" target="_blank" class="btn btn-success">
                      <i class="fab fa-whatsapp me-2"></i>Chat on WhatsApp
                   </a>
                </div>
@@ -62,7 +62,7 @@
          </div>
          <div class="col-lg-6 col-md-12">
             <div class="hero-image">
-               <img src="{% static 'images/contact-hero.jpg' %}" alt="Contact us at MOMOS Restaurant" class="img-fluid">
+               <img src="{% static 'images/about-img.png' %}" alt="Contact us at MOMOS Restaurant" class="img-fluid">
                <div class="floating-badge">
                   <span>⏰</span>
                   <small>Open Now</small>
@@ -81,7 +81,7 @@
          <h2 class="section-title">Multiple Ways to <span class="text-orange">C</span>onnect</h2>
          <p class="section-description">Choose your preferred way to reach us</p>
       </div>
-      
+
       <div class="row g-4">
          <!-- Visit Us -->
          <div class="col-lg-4 col-md-6">
@@ -100,7 +100,7 @@
                </a>
             </div>
          </div>
-         
+
          <!-- Call Us -->
          <div class="col-lg-4 col-md-6">
             <div class="contact-method-card">
@@ -124,7 +124,7 @@
                </div>
             </div>
          </div>
-         
+
          <!-- Email Us -->
          <div class="col-lg-4 col-md-6">
             <div class="contact-method-card">
@@ -159,27 +159,30 @@
                   <h2 class="section-title">Quick <span class="text-orange">E</span>nquiry</h2>
                   <p class="section-description">We'll respond within 2 hours during business hours</p>
                </div>
-               
+
                <form id="contactForm" class="contact-form" method="post" action="{% url 'contact' %}">
                   {% csrf_token %}
                   <div class="row g-3">
                      <div class="col-md-6">
                         <div class="form-group">
                            <label for="name" class="form-label">Full Name *</label>
-                           <input type="text" id="name" name="name" class="form-control" placeholder="Your Name" required>
+                           <input type="text" id="name" name="name" class="form-control" placeholder="Your Name"
+                              required>
                         </div>
                      </div>
                      <div class="col-md-6">
                         <div class="form-group">
                            <label for="phone" class="form-label">Phone Number *</label>
-                           <input type="tel" id="phone" name="phone" class="form-control" placeholder="98XXXXXXXX" required>
+                           <input type="tel" id="phone" name="phone" class="form-control" placeholder="98XXXXXXXX"
+                              required>
                            <div id="phone-error" class="error-message"></div>
                         </div>
                      </div>
                      <div class="col-12">
                         <div class="form-group">
                            <label for="email" class="form-label">Email Address</label>
-                           <input type="email" id="email" name="email" class="form-control" placeholder="your@email.com">
+                           <input type="email" id="email" name="email" class="form-control"
+                              placeholder="your@email.com">
                         </div>
                      </div>
                      <div class="col-12">
@@ -199,7 +202,8 @@
                      <div class="col-12">
                         <div class="form-group">
                            <label for="message" class="form-label">Your Message *</label>
-                           <textarea id="message" name="message" class="form-control" rows="5" placeholder="Tell us how we can help you..." required></textarea>
+                           <textarea id="message" name="message" class="form-control" rows="5"
+                              placeholder="Tell us how we can help you..." required></textarea>
                         </div>
                      </div>
                      <div class="col-12">
@@ -220,7 +224,7 @@
                </form>
             </div>
          </div>
-         
+
          <!-- Location & Hours -->
          <div class="col-lg-6">
             <div class="location-hours-wrapper">
@@ -230,7 +234,7 @@
                      <span class="section-subtitle">Our Location</span>
                      <h2 class="section-title">Find Us <span class="text-orange">E</span>asily</h2>
                   </div>
-                  
+
                   <div class="map-container">
                      <div id="map"></div>
                      <div class="map-overlay">
@@ -244,7 +248,7 @@
                      </div>
                   </div>
                </div>
-               
+
                <!-- Opening Hours -->
                <div class="hours-card">
                   <h3 class="mb-4">Opening Hours</h3>
@@ -266,7 +270,7 @@
                         <span class="time">11:00 AM - 9:00 PM</span>
                      </div>
                   </div>
-                  
+
                   <div class="current-status mt-4">
                      <div class="status-indicator open">
                         <i class="fas fa-circle"></i>
@@ -291,7 +295,7 @@
          <h2 class="section-title">Frequently Asked <span class="text-orange">Q</span>uestions</h2>
          <p class="section-description">Quick answers to common questions</p>
       </div>
-      
+
       <div class="row">
          <div class="col-lg-6">
             <div class="accordion" id="faqAccordion">
@@ -304,41 +308,47 @@
                   </h2>
                   <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
                      <div class="accordion-body">
-                        We deliver daily from 11:00 AM to 9:30 PM. Our delivery service covers Tanahun and surrounding areas within 5km radius. Delivery charges may apply based on distance.
+                        We deliver daily from 11:00 AM to 9:30 PM. Our delivery service covers Tanahun and surrounding
+                        areas within 5km radius. Delivery charges may apply based on distance.
                      </div>
                   </div>
                </div>
-               
+
                <!-- FAQ 2 -->
                <div class="accordion-item">
                   <h2 class="accordion-header">
-                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq2">
                         Do you offer catering services for events?
                      </button>
                   </h2>
                   <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                      <div class="accordion-body">
-                        Yes, we provide professional catering services for all types of events - from small family gatherings to large corporate events. Contact our events team at events@momosrestaurant.com for customized menus and quotes.
+                        Yes, we provide professional catering services for all types of events - from small family
+                        gatherings to large corporate events. Contact our events team at events@momosrestaurant.com for
+                        customized menus and quotes.
                      </div>
                   </div>
                </div>
-               
+
                <!-- FAQ 3 -->
                <div class="accordion-item">
                   <h2 class="accordion-header">
-                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq3">
                         Is parking available at your restaurant?
                      </button>
                   </h2>
                   <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
                      <div class="accordion-body">
-                        Yes, we have dedicated parking space for 15+ vehicles. Additional street parking is also available nearby. Valet parking service is available on weekends and special occasions.
+                        Yes, we have dedicated parking space for 15+ vehicles. Additional street parking is also
+                        available nearby. Valet parking service is available on weekends and special occasions.
                      </div>
                   </div>
                </div>
             </div>
          </div>
-         
+
          <div class="col-lg-6">
             <div class="accordion" id="faqAccordion2">
                <!-- FAQ 4 -->
@@ -350,40 +360,47 @@
                   </h2>
                   <div id="faq4" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion2">
                      <div class="accordion-body">
-                        Absolutely! We have an extensive vegetarian menu and several vegan-friendly options. All our vegetable momos are vegan when ordered without the special sauce. Just inform our staff about your dietary preferences.
+                        Absolutely! We have an extensive vegetarian menu and several vegan-friendly options. All our
+                        vegetable momos are vegan when ordered without the special sauce. Just inform our staff about
+                        your dietary preferences.
                      </div>
                   </div>
                </div>
-               
+
                <!-- FAQ 5 -->
                <div class="accordion-item">
                   <h2 class="accordion-header">
-                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq5">
                         Can I cancel or modify my reservation?
                      </button>
                   </h2>
                   <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2">
                      <div class="accordion-body">
-                        Yes, you can modify or cancel your reservation up to 2 hours before your booking time. Please call us directly or use the modification link in your confirmation email. For large group reservations, please notify us at least 24 hours in advance.
+                        Yes, you can modify or cancel your reservation up to 2 hours before your booking time. Please
+                        call us directly or use the modification link in your confirmation email. For large group
+                        reservations, please notify us at least 24 hours in advance.
                      </div>
                   </div>
                </div>
-               
+
                <!-- FAQ 6 -->
                <div class="accordion-item">
                   <h2 class="accordion-header">
-                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#faq6">
                         Do you accept credit cards and digital payments?
                      </button>
                   </h2>
                   <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion2">
                      <div class="accordion-body">
-                        We accept all major credit cards (Visa, MasterCard), debit cards, and digital payments through eSewa, Khalti, and ConnectIPS. Cash payments are also accepted.
+                        We accept all major credit cards (Visa, MasterCard), debit cards, and digital payments through
+                        eSewa, Khalti, and ConnectIPS. Cash payments are also accepted.
                      </div>
                   </div>
                </div>
             </div>
-            
+
             <!-- Contact Support -->
             <div class="support-card mt-4">
                <div class="support-content">
@@ -421,6 +438,52 @@
 
 <!-- JavaScript for Contact Page -->
 <script>
+   document.addEventListener('DOMContentLoaded', function () {
+
+      const phoneInput = document.getElementById('phone');
+      const phoneError = document.getElementById('phone-error');
+
+      if (phoneInput) {
+         phoneInput.addEventListener('input', function () {
+
+            const phone = this.value.replace(/\D/g, '');
+
+            if (phone.length < 7) {
+               phoneError.textContent = 'Phone number must be at least 7 digits';
+               phoneError.style.display = 'block';
+               phoneInput.classList.add('is-invalid');
+
+            } else if (phone.length > 10) {
+               phoneError.textContent = 'Phone number cannot exceed 10 digits';
+               phoneError.style.display = 'block';
+               phoneInput.classList.add('is-invalid');
+
+            } else {
+               phoneError.style.display = 'none';
+               phoneInput.classList.remove('is-invalid');
+            }
+         });
+      }
+
+   });
+
+   // Initialize simple map (using Google Maps iframe)
+   const mapContainer = document.getElementById('map');
+   if (mapContainer) {
+      mapContainer.innerHTML = `
+         <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.0324881575643!2d85.34297441506196!3d27.721469282190232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1bda4a951f0f%3A0x3ddabb234891c3bd!2sBuddha%20Stupa!5e0!3m2!1sen!2snp!4v1713623524286!5m2!1sen!2snp" 
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade">
+         </iframe>
+      `;
+   }
+</script>
+<!-- <script>
 document.addEventListener('DOMContentLoaded', function() {
    // Phone number validation
    const phoneInput = document.getElementById('phone');
@@ -533,21 +596,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
    }
    
-   // Initialize simple map (using Google Maps iframe)
-   const mapContainer = document.getElementById('map');
-   if (mapContainer) {
-      mapContainer.innerHTML = `
-         <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.0324881575643!2d85.34297441506196!3d27.721469282190232!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1bda4a951f0f%3A0x3ddabb234891c3bd!2sBuddha%20Stupa!5e0!3m2!1sen!2snp!4v1713623524286!5m2!1sen!2snp" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-         </iframe>
-      `;
-   }
+
    
    // Update current status
    function updateCurrentStatus() {
@@ -582,6 +631,6 @@ document.addEventListener('click', function(e) {
       console.log('WhatsApp contact initiated');
    }
 });
-</script>
+</script>  -->
 
 {% endblock content %}
