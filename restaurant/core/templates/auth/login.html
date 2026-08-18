@@ -65,6 +65,21 @@
                             <button class="submit">Submit</button>
                             <p class="signin">Do not have an acount ? <a href="{% url 'register' %}">Signup</a> </p>
                         </form>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="" class="btn btn-outline-primary" title="continue with facebook"><i
+                                    class="fa-brands fa-facebook"></i></a>
+
+                            <form method="post" action="{% url 'social:begin' 'google-oauth2' %}">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-warning" title="continue with google"><i
+                                        class="fa-brands fa-google"></i></button>
+                            </form>
+                            <form method="post" action="{% url 'social:begin' 'github' %}">
+                                {% csrf_token %}
+                                <button class="btn btn-outline-dark" title="continue with github"><i
+                                        class="fa-brands fa-github"></i></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

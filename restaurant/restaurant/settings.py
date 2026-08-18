@@ -29,7 +29,11 @@ INSTALLED_APPS = [
 ]
 
 EXTERNAL_APPS =[
-    'core'
+    'core',
+    'allauth',
+        'allauth.account',
+        'allauth.socialaccount',
+        'social_django'
 ]
 INSTALLED_APPS.extend(EXTERNAL_APPS)
 
@@ -41,6 +45,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
+    'allauth.account.middleware.AccountMiddleware'
 ]
 
 ROOT_URLCONF = 'restaurant.urls'
@@ -60,9 +66,39 @@ TEMPLATES = [
         },
     },
 ]
+SOCIAL_AUTH_PIPELINE = ( 
+    'social_core.pipeline.social_auth.social_details', 
+    'social_core.pipeline.social_auth.social_uid', 
+    # 🔥 Custom step 
+    'core.pipeline.associate_by_email', 
+    'social_core.pipeline.social_auth.auth_allowed', 
+    'social_core.pipeline.social_auth.social_user', 
+    'social_core.pipeline.user.get_username', 
+    'social_core.pipeline.user.create_user', 
+    'social_core.pipeline.social_auth.associate_user', 
+    'social_core.pipeline.social_auth.load_extra_data', 
+    'social_core.pipeline.user.user_details', 
+)
+
+LOGIN_URL="log_in"
+LOGIN_REDIRECT_URL ="index"
+LOGOUT_URL="log_out"
+LOGOUT_REDIRECT_URL ="log_in"
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.github.GithubOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+SOCIAL_AUTH_URL_NAMESPACE = config('SOCIAL_AUTH_URL_NAMESPACE')
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')
+
+SOCIAL_AUTH_GITHUB_KEY = config('SOCIAL_AUTH_GITHUB_KEY')
+SOCIAL_AUTH_GITHUB_SECRET = config('SOCIAL_AUTH_GITHUB_SECRET')
 
 WSGI_APPLICATION = 'restaurant.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
