@@ -16,6 +16,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -159,6 +160,9 @@ PASSWORD_RESET_TIMEOUT = 3000
 # https://docs.djangoproject.com/en/6.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "core" / "static",
+]
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
 
@@ -174,3 +178,60 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = config("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
+
+
+# JAZZMIN_SETTINGS = {
+#     "site_title": "Momo Restaurant Admin",
+#     "site_header": "Momo Restaurant",
+#     "site_brand": "Momo Admin",
+#     "welcome_sign": "Welcome to Momo Management Portal",
+#     "search_model": "app_name.Momo",  # Replace 'app_name' with your actual app name
+    
+#     # Custom icons for models (FontAwesome 5)
+#     "icons": {
+#         "auth": "fas fa-users-cog",
+#         "auth.user": "fas fa-user",
+#         "auth.Group": "fas fa-users",
+#         "app_name.Category": "fas fa-list",
+#         "app_name.Momo": "fas fa-utensils",
+#         "app_name.Message": "fas fa-envelope",
+#         "app_name.Review": "fas fa-star",
+#         "app_name.Contact": "fas fa-address-book",
+#         "app_name.Newsletter": "fas fa-paper-plane",
+#         "app_name.CateringRequest": "fas fa-glass-cheers",
+#         "app_name.PrivateDiningBooking": "fas fa-concierge-bell",
+#         "app_name.WorkshopBooking": "fas fa-chalkboard-teacher",
+#     },
+    
+#     "show_ui_builder": True,  # Enables frontend live color theme switcher
+# }
+
+# using extra css 
+JAZZMIN_SETTINGS = {
+    "site_title": "Momo Restaurant Admin",
+    "site_header": "Momo Restaurant",
+    "site_brand": "Momo Admin",
+    "welcome_sign": "Welcome to Momo Management Portal",
+    "search_model": "store.Momo",  # Replaced app_name with store
+    
+    # Custom CSS link
+    "custom_css": "css/jazzmin_custom.css",
+    
+    # Custom icons for models (FontAwesome 5)
+    "icons": {
+        "auth": "fas fa-users-cog",
+        "auth.user": "fas fa-user",
+        "auth.Group": "fas fa-users",
+        "store.Category": "fas fa-list",
+        "store.Momo": "fas fa-utensils",
+        "store.Message": "fas fa-envelope",
+        "store.Review": "fas fa-star",
+        "store.Contact": "fas fa-address-book",
+        "store.Newsletter": "fas fa-paper-plane",
+        "store.CateringRequest": "fas fa-glass-cheers",
+        "store.PrivateDiningBooking": "fas fa-concierge-bell",
+        "store.WorkshopBooking": "fas fa-chalkboard-teacher",
+    },
+    
+    "show_ui_builder": True,  # Enables live theme switcher
+}

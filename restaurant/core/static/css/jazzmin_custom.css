@@ -1,0 +1,17 @@
+/* Custom primary color overrides for buttons */
+.btn-primary {
+    background-color: #1ed53c !important; /* Momo red theme */
+    border-color: #dc2626 !important;
+}
+
+/* Custom table header styling */
+.table thead th {
+    background-color: #f2f5f9 !important;
+    color: #d2db52 !important;
+    font-weight: 600;
+}
+
+/* Rounded corners for sidebar cards */
+.card {
+    border-radius: 8px !important;
+}
