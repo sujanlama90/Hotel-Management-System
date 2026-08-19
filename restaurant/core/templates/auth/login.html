@@ -71,7 +71,6 @@
                                 <button class="btn btn-outline-primary" title="continue with facebook"><i
                                         class="fa-brands fa-facebook"></i></button>
                             </form>
-
                             <form method="post" action="{% url 'social:begin' 'google-oauth2' %}">
                                 {% csrf_token %}
                                 <button class="btn btn-outline-warning" title="continue with google"><i
