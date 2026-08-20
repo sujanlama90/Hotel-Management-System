@@ -1,6 +1,6 @@
 from pathlib import Path
 from decouple import config
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -210,7 +210,7 @@ EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD")
 JAZZMIN_SETTINGS = {
     "site_title": "Momo Restaurant Admin",
     "site_header": "Momo Restaurant",
-    "site_brand": "Momo Admin",
+    "site_brand": "Suzan Momo Admin",
     "welcome_sign": "Welcome to Momo Management Portal",
     "search_model": "store.Momo",  # Replaced app_name with store
     
@@ -234,4 +234,36 @@ JAZZMIN_SETTINGS = {
     },
     
     "show_ui_builder": True,  # Enables live theme switcher
+}
+#logger
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'timestamp': {
+            'format': '{asctime} - {levelname} - {message}',
+            'style': '{',  # Ensure the style matches the format (e.g., ⁠ { ⁠ for Python 3.2+)
+        },
+    },
+    'handlers': {
+        
+        'file': {
+            'level': 'ERROR',  # Only log errors
+            'class': 'logging.FileHandler',
+            'filename': 'debug.log',  # Log file
+            'formatter': 'timestamp',  # Use the verbose formatter
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'timestamp',  # Refers to the 'timestamp' formatter
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+    },
 }

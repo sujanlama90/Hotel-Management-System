@@ -9,6 +9,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from datetime import datetime
+import logging
+logger = logging.getLogger('django')
 # Python regular expression library
 # Used here to check uppercase letters and numbers in passwords
 import re
@@ -33,24 +35,28 @@ def index(request):
     # Get the category ID from the URL
     # Example: ?category=2
     cateid = request.GET.get('category')
+    try:
+        # If user selects "all", show all available momo items
+        if cateid == 'all':
+            momo = Momo.objects.filter(is_available=True)
+        
 
-    # If user selects "all", show all available momo items
-    if cateid == 'all':
-        momo = Momo.objects.filter(is_available=True)
+        # If a specific category is selected,
+        # show only momo items from that category
+        elif cateid:
+            momo = Momo.objects.filter(
+                is_available=True,
+                category=cateid
+            )
 
-    # If a specific category is selected,
-    # show only momo items from that category
-    elif cateid:
-        momo = Momo.objects.filter(
-            is_available=True,
-            category=cateid
-        )
-
-    # If no category is selected,
-    # show all available momo items
-    else:
-        momo = Momo.objects.filter(is_available=True)
-
+        # If no category is selected,
+        # show all available momo items
+        else:
+            momo = Momo.objects.filter(is_available=True)
+    except Exception as e:
+        logger.error(e,exc_info=True)
+    momo = None
+        
     # Check whether the form was submitted
     if request.method == "POST":
 
@@ -291,7 +297,10 @@ def workshopBooking(request):
         time_preference = request.POST.get('time_preference')
         participant_details = request.POST.get('participant_details')
 
-        WorkshopBooking.objects.create(workshop_type=workshop_type,preferred_date=preferred_date,number_of_participants=number_of_participants,time_preference=time_preference,participant_details=participant_details)
+        WorkshopBooking.objects.create(workshop_type=workshop_type,preferred_date=preferred_date,
+            number_of_participants=number_of_participants,
+            time_preference=time_preference,
+            participant_details=participant_details)
         messages.success(request, "Your workshop booking has been submitted successfully!")
 
 
